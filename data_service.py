@@ -13,7 +13,7 @@ def get_dovidnyk():
     with open("./data/dovidnyk.txt", encoding="utf-8") as dovidnyk_file:
         from_file = dovidnyk_file.readlines()
 
-    # накопичувач клієнтів
+    
     dani_dovidnyka = []
 
     for line in from_file: 
@@ -71,7 +71,7 @@ def get_osnovni_pokaznyky():
     return dani_osnovnyh_pokaznykiv
 
 def show_osnovni_pokaznyky(osnovni_pokaznyky):
-    """ Виводить на екран список основних показників діяльності підприємства по заданому коду
+    """ Виводить на екран список основних показників 
     Args:
         osnovni_pokaznyky ([list]): основні показники
     """
