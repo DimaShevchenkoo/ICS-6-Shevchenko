@@ -6,12 +6,12 @@ from data_service import get_dovidnyk, get_osnovni_pokaznyky
 index = {
     'index_name'  : '',      #назва підприємства
     'area'        : 0.0,      #одиниця виміру
-    'period'         : '',      #підприємство
-    'circulation'  : 0.0,     #базовий рік
-    'income'    : 0.0,     #попередній рік
-    'loss'   : 0.0,     #поточний рік
-    'profit' : 0.0,     #абсолютне відхилення +
-    'clear profit': 0.0,     #абсолютне відхилення + у відсотках
+    'period'         : '',      #період
+    'circulation'  : 0.0,     #роздрібний товарообіг
+    'income'    : 0.0,     #рівень валового доходу
+    'loss'   : 0.0,     #рівень витрат обігу 
+    'profit' : 0.0,     #балансовий прибуток 
+    'clear profit': 0.0,     #чистий прибуток
 }
 
 def create_analiz():
@@ -23,7 +23,7 @@ def create_analiz():
     """
 
     def get_index_name(index_name_code):
-        """знаходить назву показники по коду
+        """знаходить назву показника по коду
         Args:
             index_name_code ([type]): код назви показника
         
