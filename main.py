@@ -5,7 +5,7 @@
 
 import os
 import data_service, process_data
-from process_data import create_analiz
+from process_data import get_pokaznyky, show_pokaznyky
 from data_service import show_dovidnyk, show_osnovni_pokaznyky, get_dovidnyk, get_osnovni_pokaznyky
 
 MAIN_MENU = \
@@ -19,45 +19,45 @@ MAIN_MENU = \
 ------------------------------------------------
 """
 
-TITLE = "АНАЛІЗ ОСНОВИХ ПОКАЗНИКІВ ПІДПРИЄМСТВА"
+TITLE = "ПОКАЗНИКИ ФІНАНСОВО-ГОСПОДАРСЬКОЇ ДІЯЛЬНОСТІ ПІДПРИЄМСТВ"
 
 HEADER = \
 """
-======================================================================================================================================================================
-Назва підприємства       | Площа торгового залу | Період  | Роздрібний товарообіг, грн. | Рівень валового доходу | Балансовий прибуток, грн. | Чистий прибуток, грн. | 
-======================================================================================================================================================================
+=======================================================================================================================================================================================
+| Назва підприємства | Площа тогрового залу | Період | Роздрібний товарообіг, грн. | Рівень валового доходу | Рівень витрат обігу | Балансовий прибуток, грн. | Чистий прибуток, грн. | 
+=======================================================================================================================================================================================
 """
 
 FOOTER = \
 """
-======================================================================================================================================================================
+=======================================================================================================================================================================================
 """
 
 STOP_MESSAGE = "Для продовження натисніть <Enter>"
 
-def show_analiz_table(index_list):
+def show_analiz_table(get_pokaznyky):
     """вивід на екран таблиці показників
     """
     print(f"\n\n{TITLE:^170}")
     print(HEADER)
 
-    for index in index_list:
-        print(f"{index['index_name']:24}",
-              f"{index['area']:12}",
-              f"{index['period']:14}",  
-              f"{index['circulation']:>11}",
-              f"{index['income']:>14}",
-              f"{index['loss']:>13}",
-              f"{index['profit']:>16.2f}",
-              f"{index['clear profit']:>18.2f}"
-              )
+    for index in get_pokaznyky:
+        print(f"{index['index_name']:20}",
+            f"{index['area']:12}",
+            f"{index['period']:13}",  
+            f"{index['circulation']:14}",
+            f"{index['income']:20}",
+            f"{index['loss']:10}",
+            f"{index['profit']:11}",
+            f"{index['clear profit']:11}"
+            )
     print(FOOTER)
 
-def write_analiz(index_list):
+def write_analiz(get_pokaznyky):
     """запис аналізу в файл
     """
-    with open('./data/analiz.txt', "w") as analiz_file:
-        for index in index_list:
+    with open('I:/project/ICS-6-Shevcehnko/ICS-6-Shevcehnko/data/analiz.txt', "w") as analiz_file:
+        for index in get_pokaznyky:
             line = index['index_name'] + ';' + \
             str(index['area']) + ';' + \
             index['period'] + ';' + \
@@ -89,13 +89,14 @@ while True:
         exit(0)
 
     elif command_number == '1':
-        index_list = create_analiz()
-        show_analiz_table(index_list)
+        pokaznyky = get_pokaznyky()
+        show_pokaznyky(pokaznyky)
+        
         input(STOP_MESSAGE)
 
     elif command_number == '2':
-        index_list = create_analiz()
-        write_analiz(index_list)
+        pokaznyky_list = get_pokaznyky()
+        show_analiz_table(pokaznyky_list)
         input(STOP_MESSAGE)
 
     elif command_number == '3':
@@ -105,5 +106,6 @@ while True:
 
     elif command_number == '4':
         osnovni_pokaznyky = get_osnovni_pokaznyky()
-        show_osnovni_pokaznyky(osnovni_pokaznyky)
+        #show_osnovni_pokaznyky(osnovni_pokaznyky)
+        show_osnovni_pokaznyky(get_osnovni_pokaznyky())
         input(STOP_MESSAGE)   
