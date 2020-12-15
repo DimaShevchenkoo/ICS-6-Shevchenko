@@ -10,10 +10,10 @@ def get_dovidnyk():
     """
 
     
-    with open("./data/dovidnyk.txt", encoding="utf-8") as dovidnyk_file:
+    with open("I:/project/ICS-6-Shevchenko/ICS-6-Shevchenko/data/dovidnyk.txt", encoding="utf-8") as dovidnyk_file:
         from_file = dovidnyk_file.readlines()
 
-    
+    # накопичувач клієнтів
     dani_dovidnyka = []
 
     for line in from_file: 
@@ -26,22 +26,20 @@ def get_dovidnyk():
     return dani_dovidnyka
 
 def show_dovidnyk(dovidnyk):
-    """ Виводить на екран список довідник показників підприємства за заданим кодом
+    """ Виводить на екран довідник показників підприємства за заданим кодом
     Args:
         dovidnyk ([list]): довідник
     """
   
-    nazva_pokaznyka_code = input("Введіть код довідника: ")
+    
 
     kol_lines = 0
     
     for nazva_pokaznyka in dovidnyk:
-        if nazva_pokaznyka_code == nazva_pokaznyka[0]:
-            print("Код підприємства: {:4}; Назва підприємства: {:25}; площа торгового залу: {:5};".format(nazva_pokaznyka[0], nazva_pokaznyka[1], nazva_pokaznyka[2]))
+            print("Код підприємства: {:2}; Назва підприємства: {:2}; Площа торгового залу: {:2};".format(nazva_pokaznyka[0], nazva_pokaznyka[1], nazva_pokaznyka[2]))
             kol_lines += 1
 
-    if kol_lines == 0:
-        print("Не існує")
+   
 
 #dovidnyk = get_dovidnyk()   
 # show_dovidnyk(dovidnyk)
@@ -55,7 +53,7 @@ def get_osnovni_pokaznyky():
     """
 
     
-    with open("./data/osnovni_pokaznyky.txt", encoding="utf-8") as pokaznyky_file:
+    with open("I:/project/ICS-6-Shevchenko/ICS-6-Shevchenko/data/osnovni_pokaznyky.txt", encoding="utf-8") as pokaznyky_file:
         from_file = pokaznyky_file.readlines()
 
     # накопичувач клієнтів
@@ -71,21 +69,19 @@ def get_osnovni_pokaznyky():
     return dani_osnovnyh_pokaznykiv
 
 def show_osnovni_pokaznyky(osnovni_pokaznyky):
-    """ Виводить на екран список основних показників 
+    """ Виводить на екран список основних показників діяльності підприємства по заданому коду
     Args:
         osnovni_pokaznyky ([list]): основні показники
     """
   
-    pokaznyk_code = input("Введіть код показника: ")
+    
 
     kol_lines = 0
 
     for pokaznyk in osnovni_pokaznyky:
-        if pokaznyk_code == pokaznyk[1]:
-            print("Код підприємства: {:14}; Період: {:4}; Роздрібний товарообіг: {:11}; Валовий доход: {:11}; Витрати обігу: {}; Прибуток від реальзації: {}; Прибуток від іншої реалізації: {}; Податок на прибуток: {}; ".format(pokaznyk[0], pokaznyk[1], pokaznyk[2], pokaznyk[3], pokaznyk[4], pokaznyk[5], pokaznyk[6], pokaznyk[7],))
+            print("Код підприємства: {:2}; Період: {:2}; Роздрібний товарообіг: {:2}; Валовий доход: {:2}; Витрати обігу: {:2}; Прибуток від реальзації: {:2}; Прибуток від іншої реалізації: {:2}; Податок на прибуток: {:2}; ".format(pokaznyk[0], pokaznyk[1], pokaznyk[2], pokaznyk[3], pokaznyk[4], pokaznyk[5], pokaznyk[6], pokaznyk[7],))
             kol_lines += 1
-    if kol_lines == 0:
-        print("Не існує")
+   
 
 #osnovni_pokaznyky = get_osnovni_pokaznyky()   
 # show_osnovni_pokaznyky(osnovni_pokaznyky)
