@@ -28,7 +28,7 @@ def show_pokaznyky(pokaznyky):
 
 
     for nazva_pokaznika in pokaznyky:
-            print("1: {:2}; 2: {:2}; 3: {:2}; 4: {:2}; 5: {:2}; 6: {:2}; 7: {:2}; 8:{:2}; ".format(nazva_pokaznika[0], nazva_pokaznika[1], nazva_pokaznika[2], nazva_pokaznika[3], nazva_pokaznika[4], nazva_pokaznika[5], nazva_pokaznika[6], nazva_pokaznika[7]))
+            print("     {:2}               {:10}        {:2}           {:2}                   {:2}                   {:2}                  {:2}                  {:2} ".format(nazva_pokaznika[0], nazva_pokaznika[1], nazva_pokaznika[2], nazva_pokaznika[3], nazva_pokaznika[4], nazva_pokaznika[5], nazva_pokaznika[6], nazva_pokaznika[7]))
             kol_lines += 1
 
 #pokaznyky = get_pokaznyky()
